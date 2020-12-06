@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="767.0" prefWidth="934.0" style="-fx-background-color: #2f4f4f;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.verbovskiy.client.controller.ShowUsersController">
+   <children>
+      <TableView fx:id="tableUsers" prefHeight="615.0" prefWidth="933.0">
+        <columns>
+          <TableColumn fx:id="columnSurname" prefWidth="200.79998475313187" text="Фамилия" />
+          <TableColumn fx:id="columnName" minWidth="0.0" prefWidth="203.1999969482422" text="Имя" />
+            <TableColumn fx:id="columnLogin" prefWidth="256.800048828125" text="Логин" />
+            <TableColumn fx:id="columnIsBlocked" prefWidth="237.5999755859375" text="Заблокирован" />
+        </columns>
+      </TableView>
+      <Button fx:id="changeUserStatus" layoutX="661.0" layoutY="648.0" mnemonicParsing="false" onAction="#blockUser" prefHeight="30.0" prefWidth="242.0" style="-fx-background-color: #F0FFF0;" text="Заблокировать/Разблокировать" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button fx:id="buttonExitShowUsers" layoutX="661.0" layoutY="692.0" mnemonicParsing="false" onAction="#exitShowUsers" prefHeight="30.0" prefWidth="242.0" style="-fx-background-color: #F0FFF0;" text="Вернуться назад" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <ChoiceBox fx:id="filterType" layoutX="20.0" layoutY="646.0" prefHeight="30.0" prefWidth="184.0" style="-fx-background-color: #F0FFF0;" />
+      <Button fx:id="filterOut" layoutX="20.0" layoutY="693.0" mnemonicParsing="false" onAction="#filterOut" prefHeight="30.0" prefWidth="184.0" style="-fx-background-color: #F0FFF0;" text="Отфильтровать" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <TextField fx:id="search" alignment="CENTER" layoutX="229.0" layoutY="647.0" prefHeight="30.0" prefWidth="184.0" promptText="Поиск" style="-fx-background-color: #F0FFF0;">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </TextField>
+      <Button fx:id="buttonSearch" layoutX="229.0" layoutY="692.0" mnemonicParsing="false" onAction="#search" prefHeight="30.0" prefWidth="184.0" style="-fx-background-color: #F0FFF0;" text="Поиск" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <ChoiceBox fx:id="sortType" layoutX="442.0" layoutY="648.0" prefHeight="30.0" prefWidth="184.0" style="-fx-background-color: #F0FFF0;" />
+      <Button fx:id="sort" layoutX="442.0" layoutY="691.0" mnemonicParsing="false" onAction="#sort" prefHeight="30.0" prefWidth="184.0" style="-fx-background-color: #F0FFF0;" text="Сортировать" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

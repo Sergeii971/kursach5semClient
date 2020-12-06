@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="730.0" maxWidth="900.0" prefHeight="530.0" prefWidth="700.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.verbovskiy.client.controller.AccountManagementController">
+   <children>
+      <Button fx:id="buttonChangeAdminData" layoutX="170.0" layoutY="226.0" mnemonicParsing="false" onAction="#changeAdminData" prefHeight="38.0" prefWidth="369.0" style="-fx-background-color: #F0FFF0;" text="Изменение пароля и логина администратора" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Italic" size="16.0" />
+         </font></Button>
+      <Button fx:id="buttonExitAccountsManaging" layoutX="170.0" layoutY="331.0" mnemonicParsing="false" onAction="#exitAccountsManaging" prefHeight="35.0" prefWidth="369.0" style="-fx-background-color: #F0FFF0;" text="Вернуться назад" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Italic" size="16.0" />
+         </font></Button>
+      <Button fx:id="buttonShowUsers" layoutX="170.0" layoutY="126.0" mnemonicParsing="false" onAction="#showUsers" prefHeight="38.0" prefWidth="369.0" style="-fx-background-color: #F0FFF0;" text="просмотр данных пользователей" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Italic" size="16.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

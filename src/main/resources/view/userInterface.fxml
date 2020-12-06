@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="730.0" prefWidth="900.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.verbovskiy.client.controller.UserInterfaceController">
+   <children>
+      <Button fx:id="buttonExitUser" layoutX="252.0" layoutY="523.0" mnemonicParsing="false" onAction="#exitUser" prefHeight="40.0" prefWidth="400.0" text="Вернуться назад" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="buttonSubmitApplication" layoutX="252.0" layoutY="351.0" mnemonicParsing="false" onAction="#submitApplication" prefHeight="40.0" prefWidth="400.0" text="Подать заявку" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="buttonWatchAnswers" layoutX="254.0" layoutY="437.0" mnemonicParsing="false" onAction="#watchAnswers" prefHeight="40.0" prefWidth="400.0" text="Просмотреть ответы" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <AnchorPane layoutX="14.0" prefHeight="292.0" prefWidth="900.0" style="-fx-background-color: #F0FFF0;">
+         <children>
+            <Label layoutX="230.0" layoutY="76.0" prefHeight="46.0" prefWidth="435.0" text="Станция технического обслуживания " textFill="DARKSLATEGRAY">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="394.0" layoutY="130.0" prefHeight="31.0" prefWidth="112.0" text="Genie auto" textFill="DARKSLATEGRAY">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="310.0" layoutY="169.0" prefHeight="31.0" prefWidth="271.0" text="&quot;Творим чудеса ремонта&quot;" textFill="DARKSLATEGRAY">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

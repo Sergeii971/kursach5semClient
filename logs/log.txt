@@ -1,0 +1,94 @@
+29.11.2020 14:46:56 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+29.11.2020 14:46:57 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+29.11.2020 14:50:00 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+29.11.2020 14:51:32 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+29.11.2020 14:53:42 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+29.11.2020 14:56:38 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 15:10:31 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 15:13:24 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 15:14:51 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 15:20:11 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 15:27:36 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 15:32:08 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 15:35:10 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 15:35:11 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 15:35:14 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 15:35:14 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 15:36:14 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 15:38:22 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:04:16 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:06:37 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:10:17 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:13:45 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:19:48 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:25:03 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:26:57 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:27:50 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:31:29 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:33:05 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:35:08 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 16:35:30 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:39:01 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:39:27 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 16:40:55 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:41:36 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 16:46:47 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:47:28 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 16:50:52 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 16:51:19 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 16:55:16 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 17:04:17 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 17:49:14 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 17:49:24 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.AccountManagementController - error while show users
+05.12.2020 17:51:14 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 17:51:18 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 17:51:18 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.AccountManagementController - error while show users
+05.12.2020 17:54:56 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 17:54:56 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.AccountManagementController - error while show users
+05.12.2020 17:54:56 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 17:54:56 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.AccountManagementController - error while show users
+05.12.2020 17:56:24 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 17:56:44 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 18:01:56 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.AccountManagementController - error while show users
+05.12.2020 18:02:22 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 18:27:22 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+05.12.2020 18:27:22 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.AccountManagementController - error while show users
+05.12.2020 18:27:48 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 18:29:11 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 19:18:29 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 19:22:27 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 19:31:30 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 19:36:05 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 19:39:10 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 19:42:14 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 19:49:25 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 19:52:06 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 19:54:18 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 19:54:46 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+05.12.2020 19:56:48 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+06.12.2020 14:32:57 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+06.12.2020 14:34:37 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+06.12.2020 14:40:25 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+06.12.2020 15:00:58 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+06.12.2020 15:03:58 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+06.12.2020 15:08:06 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+06.12.2020 15:09:32 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:09:32 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:09:33 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:09:34 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:09:34 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:09:34 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:09:34 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:09:34 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:09:35 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:09:35 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:09:35 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:09:36 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:09:36 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:09:36 [JavaFX Application Thread] ERROR com.verbovskiy.client.connection.ServerConnection - error while sending request to server
+06.12.2020 15:11:53 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+06.12.2020 15:15:09 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+06.12.2020 15:17:06 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+06.12.2020 15:23:54 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+06.12.2020 15:30:24 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+06.12.2020 15:37:47 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
