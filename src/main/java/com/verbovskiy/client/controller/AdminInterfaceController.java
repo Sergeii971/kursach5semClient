@@ -19,29 +19,30 @@ public class AdminInterfaceController {
     private final Logger logger = LogManager.getLogger(AdminInterfaceController.class);
 
     @FXML
-    private Button buttonShowApplications;
-    public void showApplications(ActionEvent actionEvent) {
-        buttonShowApplications.setOnAction(event -> {
+    private Button buttonAddCar;
+    @FXML
+    private Button buttonAccount;
+    @FXML
+    private Button buttonExitAdmin;
+
+    public void addCar(ActionEvent actionEvent) {
+        buttonAddCar.setOnAction(event -> {
             try {
-                ShowApplicationsInterface();
+                Stage newStage = new Stage();
+                AnchorPane anchorPanePopup = (AnchorPane)  FXMLLoader.load(getClass().getResource("/view/addCar.fxml"));
+                Scene scene = new Scene(anchorPanePopup);
+                newStage.setScene(scene);
+                newStage.initModality(Modality.APPLICATION_MODAL);
+                newStage.setTitle("");
+                newStage.setMaxHeight(838);
+                newStage.setMaxWidth(900);
+                newStage.showAndWait();
             } catch (IOException e) {
-                logger.log(Level.ERROR, "error while opening");
+                logger.log(Level.ERROR, "error while opening adding car");
             }
         });
     }
-    private void ShowApplicationsInterface() throws IOException {
-        Stage newStage = new Stage();
-        AnchorPane anchorPanePopup = (AnchorPane)  FXMLLoader.load(getClass().getResource("Fxml/showApplications.fxml"));
-        Scene scene = new Scene(anchorPanePopup);
-        newStage.setScene(scene);
-        newStage.initModality(Modality.APPLICATION_MODAL);
-        newStage.setTitle("");
-        newStage.setMaxHeight(730);
-        newStage.setMaxWidth(1100);
-        newStage.showAndWait();
-    }
-    @FXML
-    private Button buttonAccount;
+
     public void openAccountsManagementInterface(ActionEvent actionEvent) {
         buttonAccount.setOnAction(event -> {
             try {
@@ -60,8 +61,6 @@ public class AdminInterfaceController {
         });
     }
 
-    @FXML
-    private Button buttonExitAdmin;
     public void exitAdmin(ActionEvent actionEvent) {
         buttonExitAdmin.setOnAction(event -> {
             ((Stage) ((Node) actionEvent.getSource()).getScene().getWindow()).close();

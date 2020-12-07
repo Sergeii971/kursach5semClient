@@ -47,7 +47,7 @@ public class RegistrationController {
                         .INCORRECT_PARAMETER);
                 if (incorrectParameters.isEmpty()) {
                     ((Stage) ((Node) actionEvent.getSource()).getScene().getWindow()).close();
-                    InformationWindow.showSuccessfulRegistration();
+                    InformationWindow.showSuccessfulSaving();
                 } else {
                     passwordField.clear();
                     InformationWindow.showRegistrationError(incorrectParameters);

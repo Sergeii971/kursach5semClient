@@ -36,20 +36,31 @@ public class InformationWindow {
         alert.setContentText("\nВы не заполнили все поля!!!");
         alert.showAndWait();
     }
-    public static void inputOldLoginPasswordError() {
+
+    public static void changePasswordError() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("");
         alert.setHeaderText(null);
-        alert.setContentText("\nнеправильный старый логин или пароль");
+        alert.setContentText("\nОшибка ввода, повторите попытку.");
         alert.showAndWait();
     }
-    public static void showSuccessfulRegistration() {
+
+    public static void changePasswordSuccessful() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("");
+        alert.setHeaderText(null);
+        alert.setContentText("\nПароль успешно изменен.");
+        alert.showAndWait();
+    }
+
+    public static void showSuccessfulSaving() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("");
         alert.setHeaderText(null);
         alert.setContentText("\nДанные успешно сохранены");
         alert.showAndWait();
     }
+
     public static void showRegistrationError(Map<String, Boolean> incorrectParameters) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("");
@@ -79,6 +90,33 @@ public class InformationWindow {
         alert.setContentText(builder.toString());
         alert.showAndWait();
     }
+
+    public static void showAddCarError(Map<String, Boolean> incorrectParameters) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("");
+        alert.setHeaderText(null);
+        StringBuilder builder = new StringBuilder();
+        Boolean isYearOfManufactureIncorrect = incorrectParameters.get(RequestParameter.MANUFACTURE_YEAR);
+        Boolean isPriceIncorrect = incorrectParameters.get(RequestParameter.PRICE);
+        Boolean isModelIncorrect = incorrectParameters.get(RequestParameter.MODEL);
+        Boolean isDescriptionIncorrect = incorrectParameters.get(RequestParameter.DESCRIPTION);
+
+        if (isYearOfManufactureIncorrect != null && isYearOfManufactureIncorrect) {
+            builder.append("Такой логин уже существует.\n");
+        }
+        if (isPriceIncorrect != null && isPriceIncorrect) {
+            builder.append("Неправильный формат эмейла.\n");
+        }
+        if (isModelIncorrect != null && isModelIncorrect) {
+            builder.append("Неправильный формат имени.\n");
+        }
+        if (isDescriptionIncorrect != null && isDescriptionIncorrect) {
+            builder.append("Неправильный формат фамилии.\n");
+        }
+        alert.setContentText(builder.toString());
+        alert.showAndWait();
+    }
+
     public static void showNoDataMessage() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("");
@@ -86,6 +124,7 @@ public class InformationWindow {
         alert.setContentText("\nДанных не найдено");
         alert.showAndWait();
     }
+
     public static void loginRepeatError() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("");

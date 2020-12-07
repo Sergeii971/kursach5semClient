@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class ServerResponse {
     private static ServerResponse instance;
-    private Map<String, Object> attributes;
+    private final Map<String, Object> attributes;
 
     private ServerResponse() {
         attributes = new HashMap<>();
@@ -40,5 +40,9 @@ public class ServerResponse {
 
     public void clear() {
         attributes.clear();
+    }
+
+    public boolean isEmpty() {
+        return attributes.isEmpty();
     }
 }

@@ -6,7 +6,7 @@
 
 <AnchorPane maxHeight="730.0" maxWidth="900.0" prefHeight="530.0" prefWidth="700.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.verbovskiy.client.controller.AccountManagementController">
    <children>
-      <Button fx:id="buttonChangeAdminData" layoutX="170.0" layoutY="226.0" mnemonicParsing="false" onAction="#changeAdminData" prefHeight="38.0" prefWidth="369.0" style="-fx-background-color: #F0FFF0;" text="Изменение пароля и логина администратора" textFill="DARKSLATEGRAY">
+      <Button fx:id="buttonChangeAdminData" layoutX="170.0" layoutY="226.0" mnemonicParsing="false" onAction="#changeAdminData" prefHeight="38.0" prefWidth="369.0" style="-fx-background-color: #F0FFF0;" text="Смена пароля" textFill="DARKSLATEGRAY">
          <font>
             <Font name="System Italic" size="16.0" />
          </font></Button>

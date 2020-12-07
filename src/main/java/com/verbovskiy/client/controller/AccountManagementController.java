@@ -29,8 +29,8 @@ public class AccountManagementController {
                 newStage.setScene(scene);
                 newStage.initModality(Modality.APPLICATION_MODAL);
                 newStage.setTitle("");
-                newStage.setMaxHeight(767);
-                newStage.setMaxWidth(934);
+                newStage.setMaxHeight(799);
+                newStage.setMaxWidth(957);
                 newStage.showAndWait();
             } catch (IOException e) {
                 logger.log(Level.ERROR, "error while show users");
@@ -44,7 +44,7 @@ public class AccountManagementController {
         buttonChangeAdminData.setOnAction(event -> {
             try {
                 Stage newStage = new Stage();
-                AnchorPane anchorPanePopup = (AnchorPane)  FXMLLoader.load(getClass().getResource("/view/changeAdminData.fxml"));
+                AnchorPane anchorPanePopup = (AnchorPane)  FXMLLoader.load(getClass().getResource("/view/changePassword.fxml"));
                 Scene scene = new Scene(anchorPanePopup);
                 newStage.setScene(scene);
                 newStage.initModality(Modality.APPLICATION_MODAL);

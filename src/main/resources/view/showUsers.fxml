@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="767.0" prefWidth="934.0" style="-fx-background-color: #2f4f4f;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.verbovskiy.client.controller.ShowUsersController">
+<AnchorPane prefHeight="799.0" prefWidth="957.0" style="-fx-background-color: #2f4f4f;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.verbovskiy.client.controller.ShowUsersController">
    <children>
-      <TableView fx:id="tableUsers" prefHeight="615.0" prefWidth="933.0">
+      <TableView fx:id="tableUsers" prefHeight="615.0" prefWidth="957.0">
         <columns>
-          <TableColumn fx:id="columnSurname" prefWidth="200.79998475313187" text="Фамилия" />
-          <TableColumn fx:id="columnName" minWidth="0.0" prefWidth="203.1999969482422" text="Имя" />
-            <TableColumn fx:id="columnLogin" prefWidth="256.800048828125" text="Логин" />
-            <TableColumn fx:id="columnIsBlocked" prefWidth="237.5999755859375" text="Заблокирован" />
+          <TableColumn fx:id="columnSurname" prefWidth="248.79999083280563" text="Фамилия" />
+          <TableColumn fx:id="columnName" minWidth="0.0" prefWidth="211.99998474121094" text="Имя" />
+            <TableColumn fx:id="columnLogin" prefWidth="281.60003662109375" text="Логин" />
+            <TableColumn fx:id="columnIsBlocked" prefWidth="215.20001220703125" text="Заблокирован" />
         </columns>
       </TableView>
       <Button fx:id="changeUserStatus" layoutX="661.0" layoutY="648.0" mnemonicParsing="false" onAction="#blockUser" prefHeight="30.0" prefWidth="242.0" style="-fx-background-color: #F0FFF0;" text="Заблокировать/Разблокировать" textFill="DARKSLATEGRAY">
