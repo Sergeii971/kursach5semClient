@@ -27,6 +27,7 @@ public final class RequestParameter {
     public static final String SORT_TYPE = "sortType";
     public static final String IS_IMAGE_LOADED = "isImageLoaded";
     public static final String IMAGE = "image";
+    public static final String IMAGE_NAME = "imageName";
     public static final String IS_IMAGE_SELECTED = "isImageSelected";
     public static final String BRAND = "brand";
     public static final String MODEL = "model";

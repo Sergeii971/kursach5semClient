@@ -2,7 +2,7 @@ package com.verbovskiy.client.controller;
 
 import com.verbovskiy.client.connection.*;
 import com.verbovskiy.client.information_window.InformationWindow;
-import com.verbovskiy.client.util.ByteConverter;
+import com.verbovskiy.client.util.ImageConverter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,10 +20,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.time.LocalDate;
 import java.util.Map;
@@ -114,7 +111,7 @@ public class AddCarController {
                 request.setAttribute(RequestParameter.BRAND, brand);
                 request.setAttribute(RequestParameter.PRICE, price1);
                 request.setAttribute(RequestParameter.DESCRIPTION, description1);
-                request.setAttribute(RequestParameter.IMAGE, ByteConverter.convertToBytes(file));
+                request.setAttribute(RequestParameter.IMAGE, ImageConverter.convertToBytes(file));
                 request.setAttribute(RequestParameter.MODEL, model);
                 request.setAttribute(RequestParameter.MANUFACTURE_YEAR, manufactureYear);
                 request.setAttribute(RequestParameter.COLOR, color);
@@ -138,5 +135,8 @@ public class AddCarController {
     }
 
     public void exit(ActionEvent actionEvent) {
+        buttonExit.setOnAction(e -> {
+            ((Stage) ((Node) actionEvent.getSource()).getScene().getWindow()).close();
+        });
     }
 }

@@ -20,5 +20,10 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <Button fx:id="buttonShowCars" layoutX="250.0" layoutY="400.0" mnemonicParsing="false" onAction="#showCars" prefHeight="40.0" prefWidth="400.0" text="Просмотр машин" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

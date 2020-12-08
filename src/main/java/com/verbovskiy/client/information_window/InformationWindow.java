@@ -132,4 +132,20 @@ public class InformationWindow {
         alert.setContentText("\nтакой логин уже существует, выберете другой");
         alert.showAndWait();
     }
+
+    public static void showCarInOrderList() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("");
+        alert.setHeaderText(null);
+        alert.setContentText("\nУдаление невозможно, машина находится в списке заказов");
+        alert.showAndWait();
+    }
+
+    public static void showLineError() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("");
+        alert.setHeaderText(null);
+        alert.setContentText("\nОшибка при вводе данных");
+        alert.showAndWait();
+    }
 }

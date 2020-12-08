@@ -1,20 +1,18 @@
 package com.verbovskiy.client.util;
 
+import javafx.scene.image.Image;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 
-public class ByteConverter {
-    private static final Logger logger = LogManager.getLogger(ByteConverter.class);
+public class ImageConverter {
+    private static final Logger logger = LogManager.getLogger(ImageConverter.class);
 
     public static byte[] convertToBytes(File file) {
         byte[] bytes = new byte[(int) file.length()];
-        try {
-            FileInputStream inF = new FileInputStream(file);
+        try(FileInputStream inF = new FileInputStream(file);) {
             int byte1;
             for (int i = 0; (byte1 = inF.read()) > -1; i++) {
                 bytes[i] = (byte) byte1;
@@ -25,4 +23,8 @@ public class ByteConverter {
         return bytes;
     }
 
+    public static Image convertToImage(byte[] bytes) {
+        InputStream imageIN = new ByteArrayInputStream(bytes);
+        return new Image(imageIN);
+    }
 }

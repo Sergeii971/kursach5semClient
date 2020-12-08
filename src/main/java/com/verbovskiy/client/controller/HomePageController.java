@@ -70,6 +70,7 @@ public class HomePageController {
     public void registration(ActionEvent actionEvent) {
         registrationButton.setOnAction(event -> {
             try {
+                Session.getInstance().clear();
                 registrationInterface();
             } catch (IOException e) {
                 e.printStackTrace();

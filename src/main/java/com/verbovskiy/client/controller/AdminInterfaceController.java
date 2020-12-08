@@ -17,6 +17,7 @@ import java.io.IOException;
 
 public class AdminInterfaceController {
     private final Logger logger = LogManager.getLogger(AdminInterfaceController.class);
+    public Button buttonShowCars;
 
     @FXML
     private Button buttonAddCar;
@@ -66,5 +67,23 @@ public class AdminInterfaceController {
             ((Stage) ((Node) actionEvent.getSource()).getScene().getWindow()).close();
         });
 
+    }
+
+    public void showCars(ActionEvent actionEvent) {
+        buttonShowCars.setOnAction(event -> {
+            try {
+                Stage newStage = new Stage();
+                AnchorPane anchorPanePopup = (AnchorPane)  FXMLLoader.load(getClass().getResource("/view/showCars.fxml"));
+                Scene scene = new Scene(anchorPanePopup);
+                newStage.setScene(scene);
+                newStage.initModality(Modality.APPLICATION_MODAL);
+                newStage.setTitle("");
+                newStage.setMaxHeight(730);
+                newStage.setMaxWidth(950);
+                newStage.showAndWait();
+            } catch (IOException e) {
+                logger.log(Level.ERROR, "error while opening show cars interface");
+            }
+        });
     }
 }
