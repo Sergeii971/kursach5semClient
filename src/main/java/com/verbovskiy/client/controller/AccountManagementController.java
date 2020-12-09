@@ -53,7 +53,7 @@ public class AccountManagementController {
                 newStage.setMaxWidth(900);
                 newStage.showAndWait();
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.log(Level.ERROR, "error while show change password");
             }
         });
     }

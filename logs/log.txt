@@ -172,3 +172,28 @@
 09.12.2020 00:02:29 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
 09.12.2020 00:07:42 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
 09.12.2020 00:29:50 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 12:25:40 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 13:09:36 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 13:11:15 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.UserInterfaceController - error while opening show cars interface
+09.12.2020 13:14:27 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 13:21:38 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.UserInterfaceController - error while opening show cars interface
+09.12.2020 13:22:12 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 16:29:51 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 16:30:06 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.AdminInterfaceController - error while opening show orders interface
+09.12.2020 16:31:07 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 16:33:21 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.AdminInterfaceController - error while opening show orders interface
+09.12.2020 16:34:16 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 16:34:22 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.AdminInterfaceController - error while opening show orders interface
+09.12.2020 16:36:14 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 16:36:16 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.AdminInterfaceController - error while opening show orders interface
+09.12.2020 16:37:09 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 16:37:18 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.AdminInterfaceController - error while opening show orders interface
+09.12.2020 16:38:14 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 16:42:32 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 16:44:18 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 16:56:40 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 16:58:51 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 17:03:19 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 17:07:12 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 17:09:31 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 17:12:15 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket

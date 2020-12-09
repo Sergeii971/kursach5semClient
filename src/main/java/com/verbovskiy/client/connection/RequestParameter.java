@@ -48,6 +48,8 @@ public final class RequestParameter {
     public static final String IS_BOUGHT = "isBought";
     public static final String IN_ORDER_LIST = "inOrderList";
     public static final String ORDER_ID = "orderId";
+    public static final String ORDER_DATE = "orderDate";
+    public static final String IN_PROCESSING = "inProcessing";
     public static final String COMMAND_NAME = "command";
     public static final String EXIT_COMMAND = "exit";
     public static final String SIZE = "size";

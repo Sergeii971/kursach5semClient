@@ -10,60 +10,60 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 
 public class UserInterfaceController {
+    private final Logger logger = LogManager.getLogger(UserInterfaceController.class);
 
-    @FXML
-    private Button buttonSubmitApplication;
-    public void submitApplication(ActionEvent actionEvent) {
-        buttonSubmitApplication.setOnAction(event -> {
+    public Button buttonShowCars;
+    public Button buttonChangePassword;
+
+    public void showCars(ActionEvent actionEvent) {
+        buttonShowCars.setOnAction(e -> {
             try {
-                submitApplicationInterface();
-            } catch (IOException e) {
-                e.printStackTrace();
+                Stage newStage = new Stage();
+                AnchorPane anchorPanePopup = (AnchorPane)  FXMLLoader.load(getClass().getResource("/view/userShowCars.fxml"));
+                Scene scene = new Scene(anchorPanePopup);
+                newStage.setScene(scene);
+                newStage.initModality(Modality.APPLICATION_MODAL);
+                newStage.setTitle("");
+                newStage.setMaxHeight(730);
+                newStage.setMaxWidth(950);
+                newStage.showAndWait();
+            } catch (IOException ex) {
+                logger.log(Level.ERROR, "error while opening show cars interface");
             }
         });
     }
-    private void submitApplicationInterface() throws IOException {
-        Stage newStage = new Stage();
-        AnchorPane anchorPanePopup = (AnchorPane)  FXMLLoader.load(getClass().getResource("Fxml/submitApplication.fxml"));
-        Scene scene = new Scene(anchorPanePopup);
-        newStage.setScene(scene);
-        newStage.initModality(Modality.APPLICATION_MODAL);
-        newStage.setTitle("");
-        newStage.setMaxHeight(730);
-        newStage.setMaxWidth(900);
-        newStage.showAndWait();
+
+    public void changePassword(ActionEvent actionEvent) {
+        buttonChangePassword.setOnAction(e -> {
+            try {
+                Stage newStage = new Stage();
+                AnchorPane anchorPanePopup = (AnchorPane)  FXMLLoader.load(getClass().getResource("/view/changePassword.fxml"));
+                Scene scene = new Scene(anchorPanePopup);
+                newStage.setScene(scene);
+                newStage.initModality(Modality.APPLICATION_MODAL);
+                newStage.setTitle("Управление учетными записями");
+                newStage.setMaxHeight(730);
+                newStage.setMaxWidth(900);
+                newStage.showAndWait();
+            } catch (IOException ex) {
+                logger.log(Level.ERROR, "error while show change password");
+            }
+        });
     }
+
     @FXML
     private Button buttonExitUser;
+
     public void exitUser(ActionEvent actionEvent) {
         buttonExitUser.setOnAction(event -> {
             ((Stage) ((Node) actionEvent.getSource()).getScene().getWindow()).close();
         });
-    }
-    @FXML
-    private Button buttonWatchAnswers;
-    public void watchAnswers(ActionEvent actionEvent) {
-        buttonWatchAnswers.setOnAction(event -> {
-            try {
-                watchAnswersInterface();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-    }
-    private void watchAnswersInterface() throws IOException {
-        Stage newStage = new Stage();
-        AnchorPane anchorPanePopup = (AnchorPane)  FXMLLoader.load(getClass().getResource("Fxml/watchAnswers.fxml"));
-        Scene scene = new Scene(anchorPanePopup);
-        newStage.setScene(scene);
-        newStage.initModality(Modality.APPLICATION_MODAL);
-        newStage.setTitle("");
-        newStage.setMaxHeight(730);
-        newStage.setMaxWidth(900);
-        newStage.showAndWait();
     }
 }

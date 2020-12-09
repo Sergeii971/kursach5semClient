@@ -25,23 +25,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ShowCarsController {
-    private final Logger logger = LogManager.getLogger(ShowCarsController.class);
+public class ShowOrdersController {
+    private final Logger logger = LogManager.getLogger(ShowOrdersController.class);
     private final ObservableList<String> brands = FXCollections.observableArrayList("Audi",
             "BMW", "Bugatti", "Bentley", "Cadillac", "Nissan", "Ferrari", "Jaguar", "Maserati");
     private final ObservableList<String> colors = FXCollections.observableArrayList("black", "red", "white", "orange");
     private final ObservableList<String> boxes = FXCollections.observableArrayList("mechanics", "automation");
     private final ObservableList<String> carEngines = FXCollections.observableArrayList("diesel", "petrol");
-    private final List<Car> cars = new ArrayList<>();
+    private final List<UserOrder> orders = new ArrayList<>();
     private final Map<String, Image> images = new HashMap<>();
-    private int currentCarIndex = 0;
-    private static final String BLOCK = "Заблокировать";
-    private static final String UNBLOCK = "Разблокировать";
+    private int currentOrderIndex = 0;
+    private static final String YES = "Yes";
+    private static final String NO = "No";
 
     @FXML
-    private ImageView carImage;
+    private Button buttonDealTookPlace;
     @FXML
-    private Button buttonBuy;
+    private ImageView carImage;
     @FXML
     private TextArea information;
     @FXML
@@ -53,10 +53,6 @@ public class ShowCarsController {
     @FXML
     private TextField search;
     @FXML
-    private TextField from;
-    @FXML
-    private TextField to;
-    @FXML
     private ChoiceBox<String> carBrand;
     @FXML
     private ChoiceBox<String> carColor;
@@ -64,8 +60,6 @@ public class ShowCarsController {
     private ChoiceBox<String> boxType;
     @FXML
     private ChoiceBox<String> carEngine;
-    @FXML
-    private Button buttonChangeIsAvailableStatus;
     @FXML
     private Button buttonExit;
     @FXML
@@ -83,104 +77,77 @@ public class ShowCarsController {
         boxType.setItems(boxes);
         boxType.setValue("mechanics");
         information.setEditable(false);
-        initData("SHOW_CARS");
-    }
-
-    public void buy(ActionEvent actionEvent) {
-        buttonBuy.setOnAction(e -> {
-            Car car = cars.get(currentCarIndex);
-            long carId = car.getCarId();
-            ServerConnection connection = ServerConnection.getInstance();
-            UserRequest request = connection.getRequest();
-            request.setAttribute(RequestParameter.COMMAND_NAME, "BUY_CAR");
-            request.setAttribute(RequestParameter.CAR_ID, carId);
-            connection.sendRequest();
-            ServerResponse response = connection.getResponse();
-            boolean isBought = (boolean) response.getAttribute(RequestParameter.IS_BOUGHT);
-
-            if (isBought) {
-             InformationWindow.showCarInProcessing();
-            }
-        });
+        initData("SHOW_ORDERS");
     }
 
     public void jumpNextPage(ActionEvent actionEvent) {
         buttonNextPage.setOnAction(e -> {
-            if (currentCarIndex < cars.size() - 1) {
-                currentCarIndex++;
-                Car car = cars.get(currentCarIndex);
-                Image image = images.get(car.getImageName());
-                setData(car, image);
+            if (currentOrderIndex < orders.size() - 1) {
+                currentOrderIndex++;
+                UserOrder order = orders.get(currentOrderIndex);
+                Image image = images.get(order.getCar().getImageName());
+                setData(order, image);
             }
         });
     }
 
     public void delete(ActionEvent actionEvent) {
         buttonDelete.setOnAction(e -> {
-            Car car = cars.get(currentCarIndex);
-            long carId = car.getCarId();
-            String imageName = car.getImageName();
+            UserOrder order = orders.get(currentOrderIndex);
+            long orderId = order.getOrderId();
+            String imageName = order.getCar().getImageName();
             ServerConnection connection = ServerConnection.getInstance();
             UserRequest request = connection.getRequest();
-            request.setAttribute(RequestParameter.COMMAND_NAME, "DELETE_CAR");
-            request.setAttribute(RequestParameter.CAR_ID, car.getCarId());
-            connection.sendRequest();
-            ServerResponse response = connection.getResponse();
-            boolean isInOrderList = (boolean) response.getAttribute(RequestParameter.IN_ORDER_LIST);
-            if (!isInOrderList) {
-                cars.remove(car);
-                images.remove(imageName);
-                carImage.setImage(null);
-                information.clear();
-                if (currentCarIndex < cars.size()) {
-                    Car newCar = cars.get(currentCarIndex);
-                    Image image = images.get(newCar.getImageName());
-                    setData(newCar, image);
-                } else {
-                    if (cars.size() > 0) {
-                        currentCarIndex = cars.size() - 1;
-                        Car newCar = cars.get(currentCarIndex);
-                        Image image = images.get(newCar.getImageName());
-                        setData(newCar, image);
-                    }
-                }
+            request.setAttribute(RequestParameter.COMMAND_NAME, "DELETE_ORDER");
+            request.setAttribute(RequestParameter.ORDER_ID, orderId);
+            orders.remove(order);
+            images.remove(imageName);
+            carImage.setImage(null);
+            information.clear();
+            if (currentOrderIndex < orders.size()) {
+                UserOrder newOrder = orders.get(currentOrderIndex);
+                Image image = images.get(newOrder.getCar().getImageName());
+                setData(newOrder, image);
             } else {
-                InformationWindow.showCarInOrderList();
+                if (orders.size() > 0) {
+                    currentOrderIndex = orders.size() - 1;
+                    UserOrder newOrder = orders.get(currentOrderIndex);
+                    Image image = images.get(newOrder.getCar().getImageName());
+                    setData(newOrder, image);
+                }
             }
+        });
+    }
+
+    public void submitOrder(ActionEvent actionEvent) {
+        buttonDealTookPlace.setOnAction(e -> {
+            UserOrder order = orders.get(currentOrderIndex);
+            long orderId = order.getOrderId();
+            ServerConnection connection = ServerConnection.getInstance();
+            UserRequest request = connection.getRequest();
+            request.setAttribute(RequestParameter.COMMAND_NAME, "CHANGE_ORDER_STATUS");
+            request.setAttribute(RequestParameter.ORDER_ID, orderId);
+            connection.sendRequest();
+            order.setInProcessing(!order.isInProcessing());
+            Image image = images.get(order.getCar().getImageName());
+            setData(order, image);
         });
     }
 
     public void back(ActionEvent actionEvent) {
         buttonBack.setOnAction(e -> {
-            if (currentCarIndex > 0) {
-                currentCarIndex--;
-                Car car = cars.get(currentCarIndex);
-                Image image = images.get(car.getImageName());
-                setData(car, image);
+            if (currentOrderIndex > 0) {
+                currentOrderIndex--;
+                UserOrder order = orders.get(currentOrderIndex);
+                Image image = images.get(order.getCar().getImageName());
+                setData(order, image);
             }
-        });
-    }
-
-    public void changeIsAvailableStatus(ActionEvent actionEvent) {
-        buttonChangeIsAvailableStatus.setOnAction(e -> {
-            Car car = cars.get(currentCarIndex);
-            ServerConnection connection = ServerConnection.getInstance();
-            UserRequest request = connection.getRequest();
-            request.setAttribute(RequestParameter.COMMAND_NAME, "CHANGE_CAR_AVAILABLE_STATUS");
-            request.setAttribute(RequestParameter.CAR_ID, car.getCarId());
-            request.setAttribute(RequestParameter.IS_AVAILABLE, !car.getIsAvailable());
-            connection.sendRequest();
-            car.setAvailable(!car.getIsAvailable());
-            String isAvailable = car.getIsAvailable() ? BLOCK : UNBLOCK;
-            buttonChangeIsAvailableStatus.setText(isAvailable);
         });
     }
 
     public void find(ActionEvent actionEvent) {
         buttonFind.setOnAction(e -> {
             String searchParameter = search.getText();
-            String fromPrice = from.getText();
-            String toPrice = to.getText();
             String brand = carBrand.getValue();
             String color = carColor.getValue();
             String boxType1 = boxType.getValue();
@@ -188,13 +155,11 @@ public class ShowCarsController {
             ServerConnection connection = ServerConnection.getInstance();
             UserRequest request = connection.getRequest();
             request.setAttribute(RequestParameter.SEARCH_PARAMETER, searchParameter);
-            request.setAttribute(RequestParameter.FROM_PRICE, fromPrice);
-            request.setAttribute(RequestParameter.TO_PRICE, toPrice);
             request.setAttribute(RequestParameter.BRAND, brand);
             request.setAttribute(RequestParameter.COLOR, color);
             request.setAttribute(RequestParameter.BOX_TYPE, boxType1);
             request.setAttribute(RequestParameter.ENGINE_TYPE, engineType);
-            initData("FIND_CARS");
+            initData("FIND_ORDERS");
 
         });
     }
@@ -217,8 +182,11 @@ public class ShowCarsController {
         if (isIncorrectParameters != null && isIncorrectParameters) {
             InformationWindow.showLineError();
         } else {
-            int numberOfCars = (int) response.getAttribute(RequestParameter.SIZE);
-            for (int i = 0; i < numberOfCars; i++) {
+            int numberOfOrders = (int) response.getAttribute(RequestParameter.SIZE);
+            for (int i = 0; i < numberOfOrders; i++) {
+                long orderId = Long.parseLong((String) response.getAttribute(RequestParameter.ORDER_ID + i));
+                LocalDate orderDate = (LocalDate) response.getAttribute(RequestParameter.ORDER_DATE + i);
+                boolean inProcessing = (boolean) response.getAttribute(RequestParameter.IN_PROCESSING + i);
                 long carId = Long.parseLong((String) response.getAttribute(RequestParameter.CAR_ID + i));
                 CarBrand brand = CarBrand.valueOf((String) response.getAttribute(RequestParameter.BRAND + i));
                 double price = Double.parseDouble((String) response.getAttribute(RequestParameter.PRICE + i));
@@ -235,32 +203,46 @@ public class ShowCarsController {
                 Image image = ImageConverter.convertToImage(bytes);
                 Car car = new Car(carId, brand, model, manufactureYear, price, description, imageName, addedDate, isAvailable,
                         color, boxType, engineType);
-                cars.add(car);
+                String login = (String) response.getAttribute(RequestParameter.LOGIN + i);
+                String name = (String) response.getAttribute(RequestParameter.NAME + i);
+                String surname = (String) response.getAttribute(RequestParameter.SURNAME + i);
+                boolean isBlocked = (boolean) response.getAttribute(RequestParameter.IS_BLOCKED + i);
+                String isBlockedStringFormat = isBlocked ? YES : NO;
+                User user = new User(login, name, surname, isBlockedStringFormat);
+                UserOrder order = new UserOrder(orderId, orderDate, user, car, inProcessing);
+                orders.add(order);
                 images.put(imageName, image);
                 if (i == 0) {
-                    setData(car, image);
+                    setData(order, image);
                 }
             }
         }
     }
 
-    private void setData(Car car, Image image) {
+    private void setData(UserOrder order, Image image) {
         carImage.setImage(image);
-        StringBuilder builder = new StringBuilder();
-        builder.append("Марка : ").append(car.getBrand().getBrand()).append("\n")
-                .append("Цена : ").append(car.getPrice()).append("\n")
-                .append("Модель : ").append(car.getModel()).append("\n")
-                .append("Год выпуска : ").append(car.getManufactureYear()).append("\n")
-                .append("Цвет : ").append(car.getColor().getColor()).append("\n")
-                .append("Тип двигателя : ").append(car.getEngineType().getEngine()).append("\n")
-                .append("Тип коробки : ").append(car.getBoxType().getBox()).append("\n")
-                .append("Дата добавления : ").append(car.getAddedDate()).append("\n");
-        Session session = Session.getInstance();
-        boolean isAdmin = (boolean) session.getAttribute(RequestParameter.IS_ADMIN);
-        if (isAdmin) {
-            String isAvailable = car.getIsAvailable() ? BLOCK : UNBLOCK;
-            buttonChangeIsAvailableStatus.setText(isAvailable);
+        if (!order.isInProcessing()) {
+            buttonDelete.setVisible(false);
+            buttonDelete.setDisable(true);
+            buttonDealTookPlace.setVisible(false);
+            buttonDealTookPlace.setDisable(true);
+        } else {
+            buttonDelete.setVisible(true);
+            buttonDelete.setDisable(false);
+            buttonDealTookPlace.setVisible(true);
+            buttonDealTookPlace.setDisable(false);
         }
+        StringBuilder builder = new StringBuilder();
+        builder.append("Эмейл покупателя : ").append(order.getUser().getLogin()).append("\n")
+                .append("Марка : ").append(order.getCar().getBrand().getBrand()).append("\n")
+                .append("Цена : ").append(order.getCar().getPrice()).append("\n")
+                .append("Модель : ").append(order.getCar().getModel()).append("\n")
+                .append("Год выпуска : ").append(order.getCar().getManufactureYear()).append("\n")
+                .append("Цвет : ").append(order.getCar().getColor().getColor()).append("\n")
+                .append("Тип двигателя : ").append(order.getCar().getEngineType().getEngine()).append("\n")
+                .append("Тип коробки : ").append(order.getCar().getBoxType().getBox()).append("\n")
+                .append("Дата добавления : ").append(order.getCar().getAddedDate()).append("\n")
+                .append("Дата заказа : ").append(order.getDate()).append("\n");
         information.setText(builder.toString());
     }
 }

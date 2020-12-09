@@ -148,4 +148,12 @@ public class InformationWindow {
         alert.setContentText("\nОшибка при вводе данных");
         alert.showAndWait();
     }
+
+    public static void showCarInProcessing() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("");
+        alert.setHeaderText(null);
+        alert.setContentText("\nЗаказ принят и находится в обработке, мы свяжемся с вами по вашей электронной почте");
+        alert.showAndWait();
+    }
 }

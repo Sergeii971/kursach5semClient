@@ -25,5 +25,10 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <Button fx:id="buttonShowOrders" layoutX="250.0" layoutY="478.0" mnemonicParsing="false" onAction="#showOrders" prefHeight="40.0" prefWidth="400.0" text="Просмотр заказов" textFill="DARKSLATEGRAY">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
