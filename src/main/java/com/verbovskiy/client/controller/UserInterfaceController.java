@@ -1,6 +1,5 @@
 package com.verbovskiy.client.controller;
 
-import com.verbovskiy.client.connection.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +20,7 @@ public class UserInterfaceController {
 
     public Button buttonShowCars;
     public Button buttonChangePassword;
+    public Button buttonForInvestors;
 
     public void showCars(ActionEvent actionEvent) {
         buttonShowCars.setOnAction(e -> {
@@ -54,6 +54,24 @@ public class UserInterfaceController {
                 newStage.showAndWait();
             } catch (IOException ex) {
                 logger.log(Level.ERROR, "error while show change password");
+            }
+        });
+    }
+
+    public void showForInvestors(ActionEvent actionEvent) {
+        buttonForInvestors.setOnAction(e -> {
+            try {
+                Stage newStage = new Stage();
+                AnchorPane anchorPanePopup = (AnchorPane)  FXMLLoader.load(getClass().getResource("/view/forInvestors.fxml"));
+                Scene scene = new Scene(anchorPanePopup);
+                newStage.setScene(scene);
+                newStage.initModality(Modality.APPLICATION_MODAL);
+                newStage.setTitle("Управление учетными записями");
+                newStage.setMaxHeight(730);
+                newStage.setMaxWidth(900);
+                newStage.showAndWait();
+            } catch (IOException ex) {
+                logger.log(Level.ERROR, "error while show for investors");
             }
         });
     }

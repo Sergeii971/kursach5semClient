@@ -197,3 +197,18 @@
 09.12.2020 17:07:12 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
 09.12.2020 17:09:31 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
 09.12.2020 17:12:15 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 18:26:02 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 18:30:55 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 18:34:35 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 18:42:56 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 18:46:00 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 18:48:25 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 19:48:46 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 20:06:21 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 20:08:13 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 20:10:47 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 20:14:25 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 20:14:27 [JavaFX Application Thread] ERROR com.verbovskiy.client.controller.UserInterfaceController - error while show for investors
+09.12.2020 20:15:57 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 20:17:48 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+09.12.2020 20:20:12 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket

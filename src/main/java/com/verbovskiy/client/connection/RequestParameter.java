@@ -55,4 +55,7 @@ public final class RequestParameter {
     public static final String SIZE = "size";
     public static final String USER_ID = "id";
     public static final String NEW_PASSWORD = "newPassword";
+    public static final String COMMON_COMPANY_PROFIT = "commonCompanyProfit";
+    public static final String DAY_PROFIT = "dayProfit";
+    public static final String PROFITS = "profits";
 }
