@@ -30,30 +30,30 @@ public class ForInvestorsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         XYChart.Series<Number, Number> grimotor = new XYChart.Series<>();
         grimotor.setName("Grimotor");
-        grimotor.getData().add(new XYChart.Data<>(1, 20));
-        grimotor.getData().add(new XYChart.Data<>(2, 100));
-        grimotor.getData().add(new XYChart.Data<>(3, 80));
-        grimotor.getData().add(new XYChart.Data<>(4, 180));
-        grimotor.getData().add(new XYChart.Data<>(5, 20));
-        grimotor.getData().add(new XYChart.Data<>(6, -10));
+        grimotor.getData().add(new XYChart.Data<>(1, 200));
+        grimotor.getData().add(new XYChart.Data<>(2, 1000));
+        grimotor.getData().add(new XYChart.Data<>(3, 800));
+        grimotor.getData().add(new XYChart.Data<>(4, 1800));
+        grimotor.getData().add(new XYChart.Data<>(5, 200));
+        grimotor.getData().add(new XYChart.Data<>(6, -100));
         chart1.getData().add(grimotor);
         XYChart.Series<Number, Number> siemotor = new XYChart.Series<>();
         siemotor.setName("Siemotor");
-        siemotor.getData().add(new XYChart.Data<>(1, 5));
-        siemotor.getData().add(new XYChart.Data<>(2, 60));
-        siemotor.getData().add(new XYChart.Data<>(3, 50));
-        siemotor.getData().add(new XYChart.Data<>(4, 80));
-        siemotor.getData().add(new XYChart.Data<>(5, 40));
-        siemotor.getData().add(new XYChart.Data<>(6, 50));
+        siemotor.getData().add(new XYChart.Data<>(1, 50));
+        siemotor.getData().add(new XYChart.Data<>(2, 600));
+        siemotor.getData().add(new XYChart.Data<>(3, 500));
+        siemotor.getData().add(new XYChart.Data<>(4, 800));
+        siemotor.getData().add(new XYChart.Data<>(5, 400));
+        siemotor.getData().add(new XYChart.Data<>(6, 500));
         chart1.getData().add(siemotor);
         XYChart.Series<Number, Number> carInc = new XYChart.Series<>();
         carInc.setName("Car Inc");
-        carInc.getData().add(new XYChart.Data<>(1, 35));
-        carInc.getData().add(new XYChart.Data<>(2, 40));
-        carInc.getData().add(new XYChart.Data<>(3, 50));
-        carInc.getData().add(new XYChart.Data<>(4, 70));
-        carInc.getData().add(new XYChart.Data<>(5, 60));
-        carInc.getData().add(new XYChart.Data<>(6, 70));
+        carInc.getData().add(new XYChart.Data<>(1, 350));
+        carInc.getData().add(new XYChart.Data<>(2, 400));
+        carInc.getData().add(new XYChart.Data<>(3, 500));
+        carInc.getData().add(new XYChart.Data<>(4, 700));
+        carInc.getData().add(new XYChart.Data<>(5, 600));
+        carInc.getData().add(new XYChart.Data<>(6, 700));
         chart1.getData().add(carInc);
         generateInformationMessage();
     }
@@ -80,9 +80,9 @@ public class ForInvestorsController implements Initializable {
         }
         chart1.getData().add(ourCompany);
         double weekProfit = profits.get(RequestParameter.COMMON_COMPANY_PROFIT) / 100;
-        double firstCompanyWeekProfit = 390;
-        double secondCompanyWeekProfit = 285;
-        double thirdCompanyWeekProfit = 325;
+        double firstCompanyWeekProfit = 3900;
+        double secondCompanyWeekProfit = 2850;
+        double thirdCompanyWeekProfit = 3250;
         StringBuilder builder = new StringBuilder();
 
         if (weekProfit > firstCompanyWeekProfit) {

@@ -212,3 +212,9 @@
 09.12.2020 20:15:57 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
 09.12.2020 20:17:48 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
 09.12.2020 20:20:12 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+10.12.2020 22:15:19 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+10.12.2020 22:23:10 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+10.12.2020 22:27:04 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+10.12.2020 22:31:33 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+12.12.2020 19:13:32 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket
+12.12.2020 19:19:36 [JavaFX Application Thread] INFO  com.verbovskiy.client.connection.ServerConnection - Client connected to socket

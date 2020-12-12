@@ -102,16 +102,16 @@ public class InformationWindow {
         Boolean isDescriptionIncorrect = incorrectParameters.get(RequestParameter.DESCRIPTION);
 
         if (isYearOfManufactureIncorrect != null && isYearOfManufactureIncorrect) {
-            builder.append("Такой логин уже существует.\n");
+            builder.append("неправильный формат года выпуска.\n");
         }
         if (isPriceIncorrect != null && isPriceIncorrect) {
-            builder.append("Неправильный формат эмейла.\n");
+            builder.append("Неправильный формат цены.\n");
         }
         if (isModelIncorrect != null && isModelIncorrect) {
-            builder.append("Неправильный формат имени.\n");
+            builder.append("Неправильный формат модели.\n");
         }
         if (isDescriptionIncorrect != null && isDescriptionIncorrect) {
-            builder.append("Неправильный формат фамилии.\n");
+            builder.append("Неправильный формат описания.\n");
         }
         alert.setContentText(builder.toString());
         alert.showAndWait();

@@ -27,11 +27,11 @@ import java.util.Map;
 
 public class ShowOrdersController {
     private final Logger logger = LogManager.getLogger(ShowOrdersController.class);
-    private final ObservableList<String> brands = FXCollections.observableArrayList("Audi",
+    private final ObservableList<String> brands = FXCollections.observableArrayList("default","Audi",
             "BMW", "Bugatti", "Bentley", "Cadillac", "Nissan", "Ferrari", "Jaguar", "Maserati");
-    private final ObservableList<String> colors = FXCollections.observableArrayList("black", "red", "white", "orange");
-    private final ObservableList<String> boxes = FXCollections.observableArrayList("mechanics", "automation");
-    private final ObservableList<String> carEngines = FXCollections.observableArrayList("diesel", "petrol");
+    private final ObservableList<String> colors = FXCollections.observableArrayList("default","black", "red", "white", "orange");
+    private final ObservableList<String> boxes = FXCollections.observableArrayList("default","mechanics", "automation");
+    private final ObservableList<String> carEngines = FXCollections.observableArrayList("default","diesel", "petrol");
     private final List<UserOrder> orders = new ArrayList<>();
     private final Map<String, Image> images = new HashMap<>();
     private int currentOrderIndex = 0;
@@ -69,13 +69,13 @@ public class ShowOrdersController {
     @FXML
     public void initialize() {
         carBrand.setItems(brands);
-        carBrand.setValue("Audi");
+        carBrand.setValue("default");
         carEngine.setItems(carEngines);
-        carEngine.setValue("diesel");
+        carEngine.setValue("default");
         carColor.setItems(colors);
-        carColor.setValue("black");
+        carColor.setValue("default");
         boxType.setItems(boxes);
-        boxType.setValue("mechanics");
+        boxType.setValue("default");
         information.setEditable(false);
         initData("SHOW_ORDERS");
     }
@@ -148,10 +148,10 @@ public class ShowOrdersController {
     public void find(ActionEvent actionEvent) {
         buttonFind.setOnAction(e -> {
             String searchParameter = search.getText();
-            String brand = carBrand.getValue();
-            String color = carColor.getValue();
-            String boxType1 = boxType.getValue();
-            String engineType = carEngine.getValue();
+            String brand = carBrand.getValue().equals("default") ? "" : carBrand.getValue();
+            String color = carColor.getValue().equals("default") ? "" : carColor.getValue();;
+            String boxType1 = boxType.getValue().equals("default") ? "" : boxType.getValue();
+            String engineType = carEngine.getValue().equals("default") ? "" : carEngine.getValue();
             ServerConnection connection = ServerConnection.getInstance();
             UserRequest request = connection.getRequest();
             request.setAttribute(RequestParameter.SEARCH_PARAMETER, searchParameter);
@@ -159,6 +159,8 @@ public class ShowOrdersController {
             request.setAttribute(RequestParameter.COLOR, color);
             request.setAttribute(RequestParameter.BOX_TYPE, boxType1);
             request.setAttribute(RequestParameter.ENGINE_TYPE, engineType);
+            orders.clear();
+            images.clear();
             initData("FIND_ORDERS");
 
         });
