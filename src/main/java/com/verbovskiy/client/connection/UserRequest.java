@@ -12,7 +12,7 @@ public class UserRequest implements Serializable {
         attributes = new HashMap<>();
     }
 
-    static ThreadLocal<UserRequest> getInstance() {
+    static synchronized ThreadLocal<UserRequest> getInstance() {
         if (instance.get() == null) {
             instance.set(new UserRequest());
         }

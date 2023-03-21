@@ -11,7 +11,7 @@ public class ServerResponse {
         attributes = new HashMap<>();
     }
 
-    static ThreadLocal<ServerResponse> getInstance() {
+    static synchronized ThreadLocal<ServerResponse> getInstance() {
         if (instance.get() == null) {
             instance.set(new ServerResponse());
         }

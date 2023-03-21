@@ -11,7 +11,7 @@ public class Session {
         attributes = new HashMap<>();
     }
 
-    public static ThreadLocal<Session> getInstance() {
+    public synchronized static ThreadLocal<Session> getInstance() {
         if (instance.get() == null) {
             instance.set(new Session());
         }
