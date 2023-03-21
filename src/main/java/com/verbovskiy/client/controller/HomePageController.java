@@ -29,24 +29,24 @@ public class HomePageController {
 
     public void authorization(ActionEvent actionEvent) {
         try {
-            Session.getInstance().clear();
+            Session.getInstance().get().clear();
             ServerConnection connection = ServerConnection.getInstance();
             String login = textFieldLogin.getText();
             String password = passwordField.getText();
-            UserRequest request = connection.getRequest();
-            request.setAttribute(RequestParameter.COMMAND_NAME, "AUTHENTICATION");
-            request.setAttribute(RequestParameter.LOGIN, login);
-            request.setAttribute(RequestParameter.PASSWORD, password);
+            ThreadLocal<UserRequest> request = connection.getRequest();
+            request.get().setAttribute(RequestParameter.COMMAND_NAME, "AUTHENTICATION");
+            request.get().setAttribute(RequestParameter.LOGIN, login);
+            request.get().setAttribute(RequestParameter.PASSWORD, password);
             connection.sendRequest();
-            ServerResponse response = connection.getResponse();
-            boolean successfulAuthentication = (boolean) response.getAttribute(AttributeKey.SUCCESSFUL_AUTHENTICATION);
-            boolean successfulActivation = (boolean) response.getAttribute(AttributeKey.SUCCESSFUL_ACTIVATION);
+            ThreadLocal<ServerResponse> response = connection.getResponse();
+            boolean successfulAuthentication = (boolean) response.get().getAttribute(AttributeKey.SUCCESSFUL_AUTHENTICATION);
+            boolean successfulActivation = (boolean) response.get().getAttribute(AttributeKey.SUCCESSFUL_ACTIVATION);
             if (successfulAuthentication) {
                 if (successfulActivation) {
-                    boolean isAdmin = (boolean) response.getAttribute(RequestParameter.IS_ADMIN);
-                    Session session = Session.getInstance();
-                    session.setAttribute(RequestParameter.EMAIL, login);
-                    session.setAttribute(RequestParameter.IS_ADMIN, isAdmin);
+                    boolean isAdmin = (boolean) response.get().getAttribute(RequestParameter.IS_ADMIN);
+                    ThreadLocal<Session> session = Session.getInstance();
+                    session.get().setAttribute(RequestParameter.EMAIL, login);
+                    session.get().setAttribute(RequestParameter.IS_ADMIN, isAdmin);
                     textFieldLogin.clear();
                     passwordField.clear();
                     if (isAdmin) {
@@ -70,7 +70,7 @@ public class HomePageController {
     public void registration(ActionEvent actionEvent) {
         registrationButton.setOnAction(event -> {
             try {
-                Session.getInstance().clear();
+                Session.getInstance().get().clear();
                 registrationInterface();
             } catch (IOException e) {
                 e.printStackTrace();

@@ -106,22 +106,22 @@ public class AddCarController {
                 InformationWindow.showLineIsEmpty();
             } else {
                 ServerConnection connection = ServerConnection.getInstance();
-                UserRequest request = connection.getRequest();
-                request.setAttribute(RequestParameter.COMMAND_NAME, "ADD_CAR");
-                request.setAttribute(RequestParameter.BRAND, brand);
-                request.setAttribute(RequestParameter.PRICE, price1);
-                request.setAttribute(RequestParameter.DESCRIPTION, description1);
-                request.setAttribute(RequestParameter.IMAGE, ImageConverter.convertToBytes(file));
-                request.setAttribute(RequestParameter.MODEL, model);
-                request.setAttribute(RequestParameter.MANUFACTURE_YEAR, manufactureYear);
-                request.setAttribute(RequestParameter.COLOR, color);
-                request.setAttribute(RequestParameter.ENGINE_TYPE, engineType);
-                request.setAttribute(RequestParameter.BOX_TYPE, boxType1);
-                request.setAttribute(RequestParameter.IS_AVAILABLE, isAvailable);
-                request.setAttribute(RequestParameter.ADDED_DATE, addedDate);
+                ThreadLocal<UserRequest> request = connection.getRequest();
+                request.get().setAttribute(RequestParameter.COMMAND_NAME, "ADD_CAR");
+                request.get().setAttribute(RequestParameter.BRAND, brand);
+                request.get().setAttribute(RequestParameter.PRICE, price1);
+                request.get().setAttribute(RequestParameter.DESCRIPTION, description1);
+                request.get().setAttribute(RequestParameter.IMAGE, ImageConverter.convertToBytes(file));
+                request.get().setAttribute(RequestParameter.MODEL, model);
+                request.get().setAttribute(RequestParameter.MANUFACTURE_YEAR, manufactureYear);
+                request.get().setAttribute(RequestParameter.COLOR, color);
+                request.get().setAttribute(RequestParameter.ENGINE_TYPE, engineType);
+                request.get().setAttribute(RequestParameter.BOX_TYPE, boxType1);
+                request.get().setAttribute(RequestParameter.IS_AVAILABLE, isAvailable);
+                request.get().setAttribute(RequestParameter.ADDED_DATE, addedDate);
                 connection.sendRequest();
-                ServerResponse response = connection.getResponse();
-                Map<String, Boolean> incorrectParameters = (Map<String, Boolean>) response.getAttribute(AttributeKey
+                ThreadLocal<ServerResponse> response = connection.getResponse();
+                Map<String, Boolean> incorrectParameters = (Map<String, Boolean>) response.get().getAttribute(AttributeKey
                         .INCORRECT_PARAMETER);
                 if (incorrectParameters.isEmpty()) {
                     ((Stage) ((Node) actionEvent.getSource()).getScene().getWindow()).close();

@@ -5,16 +5,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserRequest implements Serializable {
-    private static UserRequest instance;
+    private static ThreadLocal<UserRequest> instance;
     private final Map<String, Object> attributes;
 
     private UserRequest() {
         attributes = new HashMap<>();
     }
 
-    static UserRequest getInstance() {
-        if (instance == null) {
-            instance = new UserRequest();
+    static ThreadLocal<UserRequest> getInstance() {
+        if (instance.get() == null) {
+            instance.set(new UserRequest());
         }
         return instance;
     }

@@ -35,15 +35,15 @@ public class RegistrationController {
                 InformationWindow.showLineIsEmpty();
             } else {
                 ServerConnection connection = ServerConnection.getInstance();
-                UserRequest request = connection.getRequest();
-                request.setAttribute(RequestParameter.COMMAND_NAME, "REGISTRATION");
-                request.setAttribute(RequestParameter.NAME, name);
-                request.setAttribute(RequestParameter.SURNAME, surname);
-                request.setAttribute(RequestParameter.EMAIL, email);
-                request.setAttribute(RequestParameter.PASSWORD, password);
+                ThreadLocal<UserRequest> request = connection.getRequest();
+                request.get().setAttribute(RequestParameter.COMMAND_NAME, "REGISTRATION");
+                request.get().setAttribute(RequestParameter.NAME, name);
+                request.get().setAttribute(RequestParameter.SURNAME, surname);
+                request.get().setAttribute(RequestParameter.EMAIL, email);
+                request.get().setAttribute(RequestParameter.PASSWORD, password);
                 connection.sendRequest();
-                ServerResponse response = connection.getResponse();
-                Map<String, Boolean> incorrectParameters = (Map<String, Boolean>) response.getAttribute(AttributeKey
+                ThreadLocal<ServerResponse> response = connection.getResponse();
+                Map<String, Boolean> incorrectParameters = (Map<String, Boolean>) response.get().getAttribute(AttributeKey
                         .INCORRECT_PARAMETER);
                 if (incorrectParameters.isEmpty()) {
                     ((Stage) ((Node) actionEvent.getSource()).getScene().getWindow()).close();

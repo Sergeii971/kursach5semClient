@@ -91,12 +91,12 @@ public class ShowCarsController {
             Car car = cars.get(currentCarIndex);
             long carId = car.getCarId();
             ServerConnection connection = ServerConnection.getInstance();
-            UserRequest request = connection.getRequest();
-            request.setAttribute(RequestParameter.COMMAND_NAME, "BUY_CAR");
-            request.setAttribute(RequestParameter.CAR_ID, carId);
+            ThreadLocal<UserRequest> request = connection.getRequest();
+            request.get().setAttribute(RequestParameter.COMMAND_NAME, "BUY_CAR");
+            request.get().setAttribute(RequestParameter.CAR_ID, carId);
             connection.sendRequest();
-            ServerResponse response = connection.getResponse();
-            boolean isBought = (boolean) response.getAttribute(RequestParameter.IS_BOUGHT);
+            ThreadLocal<ServerResponse> response = connection.getResponse();
+            boolean isBought = (boolean) response.get().getAttribute(RequestParameter.IS_BOUGHT);
 
             if (isBought) {
              InformationWindow.showCarInProcessing();
@@ -121,12 +121,12 @@ public class ShowCarsController {
             long carId = car.getCarId();
             String imageName = car.getImageName();
             ServerConnection connection = ServerConnection.getInstance();
-            UserRequest request = connection.getRequest();
-            request.setAttribute(RequestParameter.COMMAND_NAME, "DELETE_CAR");
-            request.setAttribute(RequestParameter.CAR_ID, car.getCarId());
+            ThreadLocal<UserRequest> request = connection.getRequest();
+            request.get().setAttribute(RequestParameter.COMMAND_NAME, "DELETE_CAR");
+            request.get().setAttribute(RequestParameter.CAR_ID, car.getCarId());
             connection.sendRequest();
-            ServerResponse response = connection.getResponse();
-            boolean isInOrderList = (boolean) response.getAttribute(RequestParameter.IN_ORDER_LIST);
+            ThreadLocal<ServerResponse> response = connection.getResponse();
+            boolean isInOrderList = (boolean) response.get().getAttribute(RequestParameter.IN_ORDER_LIST);
             if (!isInOrderList) {
                 cars.remove(car);
                 images.remove(imageName);
@@ -165,10 +165,10 @@ public class ShowCarsController {
         buttonChangeIsAvailableStatus.setOnAction(e -> {
             Car car = cars.get(currentCarIndex);
             ServerConnection connection = ServerConnection.getInstance();
-            UserRequest request = connection.getRequest();
-            request.setAttribute(RequestParameter.COMMAND_NAME, "CHANGE_CAR_AVAILABLE_STATUS");
-            request.setAttribute(RequestParameter.CAR_ID, car.getCarId());
-            request.setAttribute(RequestParameter.IS_AVAILABLE, !car.getIsAvailable());
+            ThreadLocal<UserRequest> request = connection.getRequest();
+            request.get().setAttribute(RequestParameter.COMMAND_NAME, "CHANGE_CAR_AVAILABLE_STATUS");
+            request.get().setAttribute(RequestParameter.CAR_ID, car.getCarId());
+            request.get().setAttribute(RequestParameter.IS_AVAILABLE, !car.getIsAvailable());
             connection.sendRequest();
             car.setAvailable(!car.getIsAvailable());
             String isAvailable = car.getIsAvailable() ? BLOCK : UNBLOCK;
@@ -186,14 +186,14 @@ public class ShowCarsController {
             String boxType1 = boxType.getValue().equals("default") ? "" : boxType.getValue();
             String engineType = carEngine.getValue().equals("default") ? "" : carEngine.getValue();
             ServerConnection connection = ServerConnection.getInstance();
-            UserRequest request = connection.getRequest();
-            request.setAttribute(RequestParameter.SEARCH_PARAMETER, searchParameter);
-            request.setAttribute(RequestParameter.FROM_PRICE, fromPrice);
-            request.setAttribute(RequestParameter.TO_PRICE, toPrice);
-            request.setAttribute(RequestParameter.BRAND, brand);
-            request.setAttribute(RequestParameter.COLOR, color);
-            request.setAttribute(RequestParameter.BOX_TYPE, boxType1);
-            request.setAttribute(RequestParameter.ENGINE_TYPE, engineType);
+            ThreadLocal<UserRequest> request = connection.getRequest();
+            request.get().setAttribute(RequestParameter.SEARCH_PARAMETER, searchParameter);
+            request.get().setAttribute(RequestParameter.FROM_PRICE, fromPrice);
+            request.get().setAttribute(RequestParameter.TO_PRICE, toPrice);
+            request.get().setAttribute(RequestParameter.BRAND, brand);
+            request.get().setAttribute(RequestParameter.COLOR, color);
+            request.get().setAttribute(RequestParameter.BOX_TYPE, boxType1);
+            request.get().setAttribute(RequestParameter.ENGINE_TYPE, engineType);
             cars.clear();
             images.clear();
             initData("FIND_CARS");
@@ -211,29 +211,29 @@ public class ShowCarsController {
         carImage.setImage(null);
         information.clear();
         ServerConnection connection = ServerConnection.getInstance();
-        UserRequest request = connection.getRequest();
-        request.setAttribute(RequestParameter.COMMAND_NAME, commandName);
+        ThreadLocal<UserRequest> request = connection.getRequest();
+        request.get().setAttribute(RequestParameter.COMMAND_NAME, commandName);
         connection.sendRequest();
-        ServerResponse response = connection.getResponse();
-        Boolean isIncorrectParameters = (Boolean) response.getAttribute(AttributeKey.INCORRECT_PARAMETER);
+        ThreadLocal<ServerResponse> response = connection.getResponse();
+        Boolean isIncorrectParameters = (Boolean) response.get().getAttribute(AttributeKey.INCORRECT_PARAMETER);
         if (isIncorrectParameters != null && isIncorrectParameters) {
             InformationWindow.showLineError();
         } else {
-            int numberOfCars = (int) response.getAttribute(RequestParameter.SIZE);
+            int numberOfCars = (int) response.get().getAttribute(RequestParameter.SIZE);
             for (int i = 0; i < numberOfCars; i++) {
-                long carId = Long.parseLong((String) response.getAttribute(RequestParameter.CAR_ID + i));
-                CarBrand brand = CarBrand.valueOf((String) response.getAttribute(RequestParameter.BRAND + i));
-                double price = Double.parseDouble((String) response.getAttribute(RequestParameter.PRICE + i));
-                String description = (String) response.getAttribute(RequestParameter.DESCRIPTION + i);
-                String model = (String) response.getAttribute(RequestParameter.MODEL + i);
-                int manufactureYear = (int) response.getAttribute(RequestParameter.MANUFACTURE_YEAR + i);
-                CarColor color = CarColor.valueOf((String) response.getAttribute(RequestParameter.COLOR + i));
-                CarEngine engineType = CarEngine.valueOf((String) response.getAttribute(RequestParameter.ENGINE_TYPE + i));
-                BoxType boxType = BoxType.valueOf((String) response.getAttribute(RequestParameter.BOX_TYPE + i));
-                boolean isAvailable = (boolean) response.getAttribute(RequestParameter.IS_AVAILABLE + i);
-                LocalDate addedDate = (LocalDate) response.getAttribute(RequestParameter.ADDED_DATE + i);
-                String imageName = (String) response.getAttribute(RequestParameter.IMAGE_NAME + i);
-                byte[] bytes = (byte[]) response.getAttribute(RequestParameter.IMAGE + i);
+                long carId = Long.parseLong((String) response.get().getAttribute(RequestParameter.CAR_ID + i));
+                CarBrand brand = CarBrand.valueOf((String) response.get().getAttribute(RequestParameter.BRAND + i));
+                double price = Double.parseDouble((String) response.get().getAttribute(RequestParameter.PRICE + i));
+                String description = (String) response.get().getAttribute(RequestParameter.DESCRIPTION + i);
+                String model = (String) response.get().getAttribute(RequestParameter.MODEL + i);
+                int manufactureYear = (int) response.get().getAttribute(RequestParameter.MANUFACTURE_YEAR + i);
+                CarColor color = CarColor.valueOf((String) response.get().getAttribute(RequestParameter.COLOR + i));
+                CarEngine engineType = CarEngine.valueOf((String) response.get().getAttribute(RequestParameter.ENGINE_TYPE + i));
+                BoxType boxType = BoxType.valueOf((String) response.get().getAttribute(RequestParameter.BOX_TYPE + i));
+                boolean isAvailable = (boolean) response.get().getAttribute(RequestParameter.IS_AVAILABLE + i);
+                LocalDate addedDate = (LocalDate) response.get().getAttribute(RequestParameter.ADDED_DATE + i);
+                String imageName = (String) response.get().getAttribute(RequestParameter.IMAGE_NAME + i);
+                byte[] bytes = (byte[]) response.get().getAttribute(RequestParameter.IMAGE + i);
                 Image image = ImageConverter.convertToImage(bytes);
                 Car car = new Car(carId, brand, model, manufactureYear, price, description, imageName, addedDate, isAvailable,
                         color, boxType, engineType);
@@ -257,8 +257,8 @@ public class ShowCarsController {
                 .append("Тип двигателя : ").append(car.getEngineType().getEngine()).append("\n")
                 .append("Тип коробки : ").append(car.getBoxType().getBox()).append("\n")
                 .append("Дата добавления : ").append(car.getAddedDate()).append("\n");
-        Session session = Session.getInstance();
-        boolean isAdmin = (boolean) session.getAttribute(RequestParameter.IS_ADMIN);
+        ThreadLocal<Session> session = Session.getInstance();
+        boolean isAdmin = (boolean) session.get().getAttribute(RequestParameter.IS_ADMIN);
         if (isAdmin) {
             String isAvailable = car.getIsAvailable() ? BLOCK : UNBLOCK;
             buttonChangeIsAvailableStatus.setText(isAvailable);

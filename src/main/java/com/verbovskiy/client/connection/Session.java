@@ -4,16 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Session {
-    private static Session instance;
+    private static ThreadLocal<Session> instance;
     private final Map<String, Object> attributes;
 
     private Session() {
         attributes = new HashMap<>();
     }
 
-    public static Session getInstance() {
-        if (instance == null) {
-            instance = new Session();
+    public static ThreadLocal<Session> getInstance() {
+        if (instance.get() == null) {
+            instance.set(new Session());
         }
         return instance;
     }

@@ -67,9 +67,9 @@ public class ShowUsersController {
     public void filterOut(ActionEvent actionEvent) {
         filterOut.setOnAction(e -> {
             ServerConnection connection = ServerConnection.getInstance();
-            UserRequest request = connection.getRequest();
+            ThreadLocal<UserRequest> request = connection.getRequest();
             String selectedFilterType = filterType.getValue().equals(BLOCKED_USERS) ? RequestParameter.IS_BLOCKED : DEFAULT;
-            request.setAttribute(RequestParameter.USER_STATUS, selectedFilterType);
+            request.get().setAttribute(RequestParameter.USER_STATUS, selectedFilterType);
             tableUsers.refresh();
             initData("FILTER_USERS");
         });
@@ -78,10 +78,10 @@ public class ShowUsersController {
     public void sort(ActionEvent actionEvent) {
         sort.setOnAction(e -> {
             ServerConnection connection = ServerConnection.getInstance();
-            UserRequest request = connection.getRequest();
+            ThreadLocal<UserRequest> request = connection.getRequest();
             String selectedSortType = sortType.getValue().equals(SORT_BY_SURNAME) ? RequestParameter.SURNAME :
                     sortType.getValue().equals(SORT_BY_EMAIL) ? RequestParameter.EMAIL : DEFAULT;
-            request.setAttribute(RequestParameter.SORT_TYPE, selectedSortType);
+            request.get().setAttribute(RequestParameter.SORT_TYPE, selectedSortType);
             tableUsers.refresh();
             initData("SORT_USERS");
         });
@@ -90,8 +90,8 @@ public class ShowUsersController {
     public void search(ActionEvent actionEvent) {
         buttonSearch.setOnAction(e -> {
             ServerConnection connection = ServerConnection.getInstance();
-            UserRequest request = connection.getRequest();
-            request.setAttribute(RequestParameter.SEARCH_PARAMETER, search.getText());
+            ThreadLocal<UserRequest> request = connection.getRequest();
+            request.get().setAttribute(RequestParameter.SEARCH_PARAMETER, search.getText());
             tableUsers.refresh();
             initData("SEARCH_USERS");
         });
@@ -104,11 +104,11 @@ public class ShowUsersController {
             userSelected = tableUsers.getSelectionModel().getSelectedItems();
             if (allUser.size() != 0 && userSelected != null) {
                 ServerConnection connection = ServerConnection.getInstance();
-                UserRequest request = connection.getRequest();
-                request.setAttribute(RequestParameter.COMMAND_NAME, "CHANGE_USER_BLOCK_STATUS");
+                ThreadLocal<UserRequest> request = connection.getRequest();
+                request.get().setAttribute(RequestParameter.COMMAND_NAME, "CHANGE_USER_BLOCK_STATUS");
                 boolean isBlocked = !userSelected.get(0).getIsBlocked().equals(YES);
-                request.setAttribute(RequestParameter.USER_STATUS, isBlocked);
-                request.setAttribute(RequestParameter.USER_ID, userSelected.get(0).getLogin());
+                request.get().setAttribute(RequestParameter.USER_STATUS, isBlocked);
+                request.get().setAttribute(RequestParameter.USER_ID, userSelected.get(0).getLogin());
                 connection.sendRequest();
                 for (int i = 0; i < allUser.size(); i++) {
                     if (allUser.get(i).getLogin().equals(userSelected.get(0).getLogin())) {
@@ -131,16 +131,16 @@ public class ShowUsersController {
     private void initData(String commandName) {
         usersData.clear();
         ServerConnection connection = ServerConnection.getInstance();
-        UserRequest request = connection.getRequest();
-        request.setAttribute(RequestParameter.COMMAND_NAME, commandName);
+        ThreadLocal<UserRequest> request = connection.getRequest();
+        request.get().setAttribute(RequestParameter.COMMAND_NAME, commandName);
         connection.sendRequest();
-        ServerResponse response = connection.getResponse();
-        int numberOfUsers = (int) response.getAttribute(RequestParameter.SIZE);
+        ThreadLocal<ServerResponse> response = connection.getResponse();
+        int numberOfUsers = (int) response.get().getAttribute(RequestParameter.SIZE);
         for (int i = 0; i < numberOfUsers; i++) {
-            String login = (String) response.getAttribute(RequestParameter.LOGIN + i);
-            String name = (String) response.getAttribute(RequestParameter.NAME + i);
-            String surname = (String) response.getAttribute(RequestParameter.SURNAME + i);
-            boolean isBlocked = (boolean) response.getAttribute(RequestParameter.IS_BLOCKED + i);
+            String login = (String) response.get().getAttribute(RequestParameter.LOGIN + i);
+            String name = (String) response.get().getAttribute(RequestParameter.NAME + i);
+            String surname = (String) response.get().getAttribute(RequestParameter.SURNAME + i);
+            boolean isBlocked = (boolean) response.get().getAttribute(RequestParameter.IS_BLOCKED + i);
             String isBlockedStringFormat = isBlocked ? YES : NO;
             usersData.add(new User(login, name, surname, isBlockedStringFormat));
         }

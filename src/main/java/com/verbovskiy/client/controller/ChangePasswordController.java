@@ -27,17 +27,17 @@ public class ChangePasswordController {
                 InformationWindow.showLineIsEmpty();
             } else {
                 ServerConnection connection = ServerConnection.getInstance();
-                UserRequest request = connection.getRequest();
-                request.setAttribute(RequestParameter.COMMAND_NAME, "CHANGE_PASSWORD");
+                ThreadLocal<UserRequest> request = connection.getRequest();
+                request.get().setAttribute(RequestParameter.COMMAND_NAME, "CHANGE_PASSWORD");
                 String oldPasswordStringFormat = oldPassword.getText();
                 String newPasswordStringFormat = newPassword.getText();
                 String passwordConfirmationStringFormat = passwordConfirmation.getText();
-                request.setAttribute(RequestParameter.PASSWORD, oldPasswordStringFormat);
-                request.setAttribute(RequestParameter.NEW_PASSWORD, newPasswordStringFormat);
-                request.setAttribute(RequestParameter.PASSWORD_CONFIRMATION, passwordConfirmationStringFormat);
+                request.get().setAttribute(RequestParameter.PASSWORD, oldPasswordStringFormat);
+                request.get().setAttribute(RequestParameter.NEW_PASSWORD, newPasswordStringFormat);
+                request.get().setAttribute(RequestParameter.PASSWORD_CONFIRMATION, passwordConfirmationStringFormat);
                 connection.sendRequest();
-                ServerResponse response = connection.getResponse();
-                boolean isPasswordChange = (boolean) response.getAttribute(AttributeKey.SUCCESSFUL_PASSWORD_CHANGE);
+                ThreadLocal<ServerResponse> response = connection.getResponse();
+                boolean isPasswordChange = (boolean) response.get().getAttribute(AttributeKey.SUCCESSFUL_PASSWORD_CHANGE);
                 if (isPasswordChange) {
                     ((Stage) ((Node) actionEvent.getSource()).getScene().getWindow()).close();
                     InformationWindow.changePasswordSuccessful();

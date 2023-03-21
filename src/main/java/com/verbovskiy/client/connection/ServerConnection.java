@@ -14,8 +14,8 @@ import java.util.Map;
 
 public class ServerConnection {
     private final static ServerConnection instance = new ServerConnection();
-    private final UserRequest request;
-    private final ServerResponse response;
+    private final ThreadLocal<UserRequest> request;
+    private final ThreadLocal<ServerResponse> response;
     private static Socket socket;
     private static final int PORT = 1280;
     private final Logger logger = LogManager.getLogger(ServerConnection.class);
@@ -40,24 +40,24 @@ public class ServerConnection {
         return instance;
     }
 
-    public UserRequest getRequest() {
+    public ThreadLocal<UserRequest> getRequest() {
         return request;
     }
 
-    public ServerResponse getResponse() {
+    public ThreadLocal<ServerResponse> getResponse() {
         return response;
     }
 
     public void sendRequest() {
         try {
-            response.clear();
-            Session session = Session.getInstance();
-            request.setAllAttributes(session.getAttributes());
-            Map<String, Object> request1 = new HashMap<>(request.getAttributes());
+            response.get().clear();
+            ThreadLocal<Session> session = Session.getInstance();
+            request.get().setAllAttributes(session.get().getAttributes());
+            Map<String, Object> request1 = new HashMap<>(request.get().getAttributes());
             out.flush();
             out.writeObject(request1);
-            request.clear();
-            response.setAllAttributes((Map<String, Object>) in.readObject());
+            request.get().clear();
+            response.get().setAllAttributes((Map<String, Object>) in.readObject());
         } catch (IOException | ClassNotFoundException e) {
             logger.log(Level.ERROR, "error while sending request to server");
         }

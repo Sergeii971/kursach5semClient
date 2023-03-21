@@ -4,16 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ServerResponse {
-    private static ServerResponse instance;
+    private static ThreadLocal<ServerResponse> instance;
     private final Map<String, Object> attributes;
 
     private ServerResponse() {
         attributes = new HashMap<>();
     }
 
-    static ServerResponse getInstance() {
-        if (instance == null) {
-            instance = new ServerResponse();
+    static ThreadLocal<ServerResponse> getInstance() {
+        if (instance.get() == null) {
+            instance.set(new ServerResponse());
         }
         return instance;
     }

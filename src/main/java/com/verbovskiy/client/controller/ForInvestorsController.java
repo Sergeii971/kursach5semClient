@@ -66,11 +66,11 @@ public class ForInvestorsController implements Initializable {
 
     private void generateInformationMessage() {
         ServerConnection connection = ServerConnection.getInstance();
-        UserRequest request = connection.getRequest();
-        request.setAttribute(RequestParameter.COMMAND_NAME, "WEEK_PROFIT");
+        ThreadLocal<UserRequest> request = connection.getRequest();
+        request.get().setAttribute(RequestParameter.COMMAND_NAME, "WEEK_PROFIT");
         connection.sendRequest();
-        ServerResponse response = connection.getResponse();
-        Map<String, Double> profits = (Map<String, Double>) response.getAttribute(RequestParameter.PROFITS);
+        ThreadLocal<ServerResponse> response = connection.getResponse();
+        Map<String, Double> profits = (Map<String, Double>) response.get().getAttribute(RequestParameter.PROFITS);
         XYChart.Series<Number, Number> ourCompany = new XYChart.Series<>();
         ourCompany.setName("Наша компания");
          int xValue = 6;
